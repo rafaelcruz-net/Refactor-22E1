@@ -3,7 +3,7 @@ using System.Text;
 
 namespace SupermarketReceipt
 {
-    public class ReceiptPrinter
+    public class ReceiptPrinter : IPrinter
     {
         private static readonly CultureInfo Culture = CultureInfo.CreateSpecificCulture("en-GB");
 

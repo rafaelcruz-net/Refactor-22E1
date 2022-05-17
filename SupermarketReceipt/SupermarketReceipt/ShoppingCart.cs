@@ -53,68 +53,45 @@ namespace SupermarketReceipt
         {
             return offer.OfferType switch
             {
+                SpecialOfferType.OfferForAmount => CalculateOfferForAmount(catalog, offer, product),
+                SpecialOfferType.PercentDiscount => CalculatePercentDiscount(catalog, offer, product),
                 SpecialOfferType.ThreeForTwo => CalculateThreeForTwo(catalog, offer, product),
-                SpecialOfferType.TwoForAmount => CalculateTwoForAmount(catalog, offer, product),
-                SpecialOfferType.FiveForAmount => CalculateFiveForAmount(catalog, offer, product),
-                SpecialOfferType.TenPercentDiscount => CalculateTenPercentDiscount(catalog, offer, product),
-                SpecialOfferType.TwentyPercentDiscount => CalculateTwentyPercentDiscount(catalog, offer, product),
                 _ => throw new ArgumentException("Cannot Handle Offers")
             };
         }
 
-        private Discount CalculateTwentyPercentDiscount(ISupermarketCatalog catalog, Offer offer, Product product)
+        private Discount CalculatePercentDiscount(ISupermarketCatalog catalog, Offer offer, Product product)
         {
             var quantity = _productQuantities[product];
             var unitPrice = catalog.GetUnitPrice(product);
             return new Discount(product, offer.Argument + "% off", -quantity * unitPrice * offer.Argument / 100.0);
         }
+        
 
-        private Discount CalculateTenPercentDiscount(ISupermarketCatalog catalog, Offer offer, Product product)
+        private Discount CalculateOfferForAmount(ISupermarketCatalog catalog, Offer offer, Product product)
         {
-            var quantity = _productQuantities[product];
-            var unitPrice = catalog.GetUnitPrice(product);
-            return new Discount(product, offer.Argument + "% off", -quantity * unitPrice * offer.Argument / 100.0);
-
-        }
-
-        private Discount CalculateFiveForAmount(ISupermarketCatalog catalog, Offer offer, Product product)
-        {
-            if (_productQuantities[product] < 5)
+            if (_productQuantities[product] < offer.AmountOffer)
                 return null;
 
             var quantity = _productQuantities[product];
             var unitPrice = catalog.GetUnitPrice(product);
-            var total = offer.Argument * (quantity / 5) + quantity % 5 * unitPrice;
+            var total = offer.Argument * (quantity / offer.AmountOffer) + quantity % offer.AmountOffer * unitPrice;
             var discountN = unitPrice * quantity - total;
-            var discount = new Discount(product, "5 for " + offer.Argument, -discountN);
+            var discount = new Discount(product, $"{offer.AmountOffer} for " + offer.Argument, -discountN);
 
             return discount;
         }
-
-        private Discount CalculateTwoForAmount(ISupermarketCatalog catalog, Offer offer, Product product)
-        {
-
-            if (_productQuantities[product] < 2)
-                return null;
-
-            var quantity = _productQuantities[product];
-            var unitPrice = catalog.GetUnitPrice(product);
-            var total = offer.Argument * (quantity / 2) + quantity % 2 * unitPrice;
-            var discountN = unitPrice * quantity - total;
-            var discount = new Discount(product, "2 for " + offer.Argument, -discountN);
-
-            return discount;
-
-        }
-
+        
+       
         private Discount CalculateThreeForTwo(ISupermarketCatalog catalog, Offer offer, Product product)
         {
             if (_productQuantities[product] < 3)
                 return null;
 
+            const int amountOffer = 3;
             var quantity = _productQuantities[product];
             var unitPrice = catalog.GetUnitPrice(product);
-            var discountAmount = quantity * unitPrice - ((quantity / 3) * 2 * unitPrice + quantity % 3 * unitPrice);
+            var discountAmount = quantity * unitPrice - ((quantity / amountOffer) * 2 * unitPrice + quantity % amountOffer * unitPrice);
 
             return new Discount(product, "3 for 2", -discountAmount);
 

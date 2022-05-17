@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace SupermarketReceipt
@@ -12,9 +13,22 @@ namespace SupermarketReceipt
             _catalog = catalog;
         }
 
-        public void AddSpecialOffer(SpecialOfferType offerType, Product product, double argument)
+
+        public void AddSpecialOffer(SpecialOfferType offerType, Product product, double argument, AmountOfferType amountOfferType = AmountOfferType.TwoForAmount)
         {
-            _offers[product] = new Offer(offerType, product, argument);
+            if (offerType == SpecialOfferType.PercentDiscount)
+                throw new ArgumentException($"Por favor, utilize a assinatura de metodo com o tipo {nameof(SpecialOfferPercentDiscount)}");
+
+            if (offerType == SpecialOfferType.OfferForAmount)
+                _offers[product] = new Offer(offerType, product, argument, amountOfferType);
+            else
+                _offers[product] = new Offer(offerType, product, argument);
+        }
+
+
+        public void AddSpecialOffer(Product product, SpecialOfferPercentDiscount percentDiscount)
+        {
+            _offers[product] = new Offer(product, Convert.ToDouble(percentDiscount));
         }
 
         public Receipt ChecksOutArticlesFrom(ShoppingCart theCart)

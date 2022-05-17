@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -20,7 +21,7 @@ namespace SupermarketReceipt.Test
             cart.AddItemQuantity(apples, 2.5);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(SpecialOfferType.TenPercentDiscount, toothbrush, 10.0);
+            teller.AddSpecialOffer(toothbrush, SpecialOfferPercentDiscount.TenPercent);
 
             // ACT
             var receipt = teller.ChecksOutArticlesFrom(cart);
@@ -48,7 +49,7 @@ namespace SupermarketReceipt.Test
             cart.AddItemQuantity(toothbrush, 2);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(SpecialOfferType.TwoForAmount, toothbrush, .99);
+            teller.AddSpecialOffer(SpecialOfferType.OfferForAmount, toothbrush, .99, AmountOfferType.TwoForAmount);
 
             var receipt = teller.ChecksOutArticlesFrom(cart);
 
@@ -74,7 +75,7 @@ namespace SupermarketReceipt.Test
             cart.AddItemQuantity(apple, 2);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(SpecialOfferType.TwentyPercentDiscount, apple, 20.0);
+            teller.AddSpecialOffer(apple, SpecialOfferPercentDiscount.TwentyPercent);
 
             // ACT
             var receipt = teller.ChecksOutArticlesFrom(cart);
@@ -103,7 +104,7 @@ namespace SupermarketReceipt.Test
             cart.AddItemQuantity(toothpaste, 5);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(SpecialOfferType.FiveForAmount, toothpaste, 7.49);
+            teller.AddSpecialOffer(SpecialOfferType.OfferForAmount, toothpaste, 7.49, AmountOfferType.FiveForAmount);
 
             var receipt = teller.ChecksOutArticlesFrom(cart);
 
@@ -132,7 +133,7 @@ namespace SupermarketReceipt.Test
             cart.AddItemQuantity(tomatoes, 2);
 
             var teller = new Teller(catalog);
-            teller.AddSpecialOffer(SpecialOfferType.TwoForAmount, tomatoes, 1.38);
+            teller.AddSpecialOffer(SpecialOfferType.OfferForAmount, tomatoes, 1.38);
 
             var receipt = teller.ChecksOutArticlesFrom(cart);
 
@@ -147,6 +148,64 @@ namespace SupermarketReceipt.Test
             Assert.Equal(2, receiptItem.Quantity);
 
         }
+
+        [Fact]
+        public void EightForAmount()
+        {
+            ISupermarketCatalog catalog = new FakeCatalog();
+
+            var tomatoes = new Product("box tomatoes", ProductUnit.Each);
+            catalog.AddProduct(tomatoes, 7.99);
+
+            var cart = new ShoppingCart();
+            cart.AddItemQuantity(tomatoes, 8);
+
+            var teller = new Teller(catalog);
+            teller.AddSpecialOffer(SpecialOfferType.OfferForAmount, tomatoes, 5.99, AmountOfferType.EightForAmount);
+
+            var receipt = teller.ChecksOutArticlesFrom(cart);
+
+            Assert.Equal("5,99", receipt.GetTotalPrice().ToString("N2"));
+            Assert.Single(receipt.GetItems());
+
+            var receiptItem = receipt.GetItems()[0];
+
+            Assert.Equal(tomatoes, receiptItem.Product);
+            Assert.Equal(7.99, receiptItem.Price);
+            Assert.Equal(7.99 * 8, receiptItem.TotalPrice);
+            Assert.Equal(8, receiptItem.Quantity);
+
+        }
+
+
+        [Fact]
+        public void TenForAmount()
+        {
+            ISupermarketCatalog catalog = new FakeCatalog();
+
+            var tomatoes = new Product("box tomatoes", ProductUnit.Each);
+            catalog.AddProduct(tomatoes, 20.99);
+
+            var cart = new ShoppingCart();
+            cart.AddItemQuantity(tomatoes, 10);
+
+            var teller = new Teller(catalog);
+            teller.AddSpecialOffer(SpecialOfferType.OfferForAmount, tomatoes, 15.99, AmountOfferType.TenForAmount);
+
+            var receipt = teller.ChecksOutArticlesFrom(cart);
+
+            Assert.Equal("15,99", receipt.GetTotalPrice().ToString("N2"));
+            Assert.Single(receipt.GetItems());
+
+            var receiptItem = receipt.GetItems()[0];
+
+            Assert.Equal(tomatoes, receiptItem.Product);
+            Assert.Equal(20.99, receiptItem.Price);
+            Assert.Equal(20.99 * 10, receiptItem.TotalPrice);
+            Assert.Equal(10, receiptItem.Quantity);
+
+        }
+
 
         [Fact]
         public void ThreeForTwo()
@@ -171,6 +230,56 @@ namespace SupermarketReceipt.Test
             {
                 Assert.True(e.Product.Name == "toothbrush");
             });
+
+        }
+
+        [Fact]
+        public void PrintHtmlTest()
+        {
+            ISupermarketCatalog catalog = new FakeCatalog();
+
+            var tomatoes = new Product("box tomatoes", ProductUnit.Each);
+            catalog.AddProduct(tomatoes, .99);
+
+            var cart = new ShoppingCart();
+            cart.AddItemQuantity(tomatoes, 2);
+
+            var teller = new Teller(catalog);
+            teller.AddSpecialOffer(SpecialOfferType.OfferForAmount, tomatoes, 1.38);
+
+            var receipt = teller.ChecksOutArticlesFrom(cart);
+
+            IPrinter printer = PrinterFactory.Create(PrinterType.HTML);
+
+            var result = printer.PrintReceipt(receipt);
+
+            Assert.NotNull(result);
+
+
+        }
+
+        [Fact]
+        public void PrintConsoleTest()
+        {
+            ISupermarketCatalog catalog = new FakeCatalog();
+
+            var tomatoes = new Product("box tomatoes", ProductUnit.Each);
+            catalog.AddProduct(tomatoes, .99);
+
+            var cart = new ShoppingCart();
+            cart.AddItemQuantity(tomatoes, 2);
+
+            var teller = new Teller(catalog);
+            teller.AddSpecialOffer(SpecialOfferType.OfferForAmount, tomatoes, 1.38);
+
+            var receipt = teller.ChecksOutArticlesFrom(cart);
+
+            IPrinter printer = PrinterFactory.Create(PrinterType.Console);
+
+            var result = printer.PrintReceipt(receipt);
+
+            Assert.NotNull(result);
+
 
         }
 

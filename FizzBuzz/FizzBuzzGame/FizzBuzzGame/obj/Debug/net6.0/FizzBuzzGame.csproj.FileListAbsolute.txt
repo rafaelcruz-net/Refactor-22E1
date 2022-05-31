@@ -1,0 +1,15 @@
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\bin\Debug\net6.0\FizzBuzzGame.exe
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\bin\Debug\net6.0\FizzBuzzGame.deps.json
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\bin\Debug\net6.0\FizzBuzzGame.runtimeconfig.json
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\bin\Debug\net6.0\FizzBuzzGame.dll
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\bin\Debug\net6.0\FizzBuzzGame.pdb
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.csproj.AssemblyReference.cache
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.AssemblyInfoInputs.cache
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.AssemblyInfo.cs
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.csproj.CoreCompileInputs.cache
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.dll
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\refint\FizzBuzzGame.dll
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.pdb
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\FizzBuzzGame.genruntimeconfig.cache
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\FizzBuzz\FizzBuzzGame\FizzBuzzGame\obj\Debug\net6.0\ref\FizzBuzzGame.dll

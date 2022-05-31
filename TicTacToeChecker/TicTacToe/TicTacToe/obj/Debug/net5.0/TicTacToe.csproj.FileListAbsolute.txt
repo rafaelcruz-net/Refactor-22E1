@@ -1,0 +1,12 @@
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.deps.json
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.dll
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.pdb
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.csproj.AssemblyReference.cache
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.AssemblyInfoInputs.cache
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.AssemblyInfo.cs
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.dll
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\refint\TicTacToe.dll
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.pdb
+C:\Projetos\infnet\Refactor\22E1\Refactor-22E1\TicTacToeChecker\TicTacToe\TicTacToe\obj\Debug\net5.0\ref\TicTacToe.dll

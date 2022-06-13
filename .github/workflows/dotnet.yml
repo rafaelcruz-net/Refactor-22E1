@@ -1,4 +1,4 @@
-name: Build Refactor
+name: Build FizzBuzz
 
 on:
   push:

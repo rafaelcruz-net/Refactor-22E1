@@ -17,11 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.x
-    - name: Enter folder
-      run: cd ./FizzBuzz
     - name: Restore dependencies
-      run: dotnet restore 
+      run: dotnet restore ./FizzBuzz
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build --no-restore ./FizzBuzz

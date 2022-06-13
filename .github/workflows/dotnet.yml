@@ -18,6 +18,6 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore ./FizzBuzz
+      run: dotnet restore ./FizzBuzz/FizzBuzzGame
     - name: Build
-      run: dotnet build --no-restore ./FizzBuzz
+      run: dotnet build ./FizzBuzz/FizzBuzzGame --no-restore

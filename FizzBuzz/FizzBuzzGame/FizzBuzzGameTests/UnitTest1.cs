@@ -6,44 +6,44 @@ namespace FizzBuzzGameTests
     public class UnitTest1
     {
         [Theory]
-        [InlineData(3)]
-        [InlineData(6)]
-        [InlineData(9)]
-        [InlineData(12)]
-        [InlineData(18)]
-        [InlineData(21)]
-        public void Game_Should_Print_Fizz(int data)
+        [InlineData(3, "Fizz")]
+        [InlineData(6, "Fizz")]
+        [InlineData(9, "Fizz")]
+        [InlineData(12, "Fizz")]
+        [InlineData(18, "Fizz")]
+        [InlineData(21, "Fizz")]
+        public void Game_Should_Print_Fizz(int data, string expectedResult)
         {
             var result = FizzBuzzParser.Write(data);
 
             Assert.NotNull(result);
-            Assert.Equal(result, "Fizz");
+            Assert.Equal(result, expectedResult);
         }
 
         [Theory]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
-        [InlineData(25)]
-        [InlineData(35)]
-        [InlineData(40)]
-        public void Game_Should_Print_Buzz(int data)
+        [InlineData(5, "Buzz")]
+        [InlineData(10, "Buzz")]
+        [InlineData(20, "Buzz")]
+        [InlineData(25, "Buzz")]
+        [InlineData(35, "Buzz")]
+        [InlineData(40, "Buzz")]
+        public void Game_Should_Print_Buzz(int data, string expectedResult)
         {
             var result = FizzBuzzParser.Write(data);
 
             Assert.NotNull(result);
-            Assert.Equal(result, "Buzz");
+            Assert.Equal(result, expectedResult);
         }
 
         [Theory]
-        [InlineData(15)]
-        [InlineData(30)]
-        public void Game_Should_Print_FizzBuzz(int data)
+        [InlineData(15, "FizzBuzz")]
+        [InlineData(30, "FizzBuzz")]
+        public void Game_Should_Print_FizzBuzz(int data, string expectedResult)
         {
             var result = FizzBuzzParser.Write(data);
 
             Assert.NotNull(result);
-            Assert.Equal(result, "FizzBuzz");
+            Assert.Equal(result, expectedResult);
         }
 
         [Fact]
